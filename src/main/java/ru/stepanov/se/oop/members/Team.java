@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class Team {
     private String[] members;
-    private HashMap<CourseLine, String> TeamResult = new HashMap<>();
+    private Map<CourseLine, String> TeamResult = new HashMap<>();
 
     public Team(String[] members) {
         if (members.length == 4) {
