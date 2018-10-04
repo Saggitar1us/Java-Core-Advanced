@@ -10,10 +10,10 @@ public class App {
     private static final float[] arraySecond = new float[HALF];
 
     public static void main(String[] args) {
-        App app = new App()
+        final App app = new App()
                 .createArray()
                 .elapsedSyncArray()
-                .divisionArray();
+                .splitArray();
 
         new Thread(() -> app.elapsedAsyncArray(arrayFirst)).start();
         new Thread(() -> app.elapsedAsyncArray(arraySecond)).start();
@@ -21,7 +21,7 @@ public class App {
         app.concatenationArray();
     }
 
-    private App divisionArray() {
+    private App splitArray() {
         arraycopy(array, 0, arrayFirst, 0, HALF);
         arraycopy(array, HALF, arraySecond, 0, HALF);
         return this;
@@ -51,7 +51,6 @@ public class App {
         }
 
         System.out.println("Elapsed async time: " + (System.currentTimeMillis() - elapsedAsync) + " mls");
-
     }
 
     private App createArray() {
