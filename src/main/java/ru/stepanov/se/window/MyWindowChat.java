@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MyWindowChat extends JFrame {
+    private final JButton jButtonSend = new JButton();
+    private final JTextArea textField = new JTextArea(18, 30);
+    private final JTextField messageField = new JTextField(15);
+    private final JPanel contents = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
     public MyWindowChat() {
         setBounds(500, 500, 400, 400);
@@ -14,9 +18,8 @@ public class MyWindowChat extends JFrame {
         /*
          Кнопка для отправки сообещние
          */
-        JButton jbs = new JButton("Send");
-        add(jbs, BorderLayout.PAGE_END);
-
+        jButtonSend.setText("Send");
+        add(jButtonSend, BorderLayout.PAGE_END);
         /*
         Label для полей
          */
@@ -27,8 +30,6 @@ public class MyWindowChat extends JFrame {
         /*
         Поля для отправки сообещений
          */
-        JTextArea textField = new JTextArea(18, 30);
-        JTextField messageField = new JTextField(15);
         textField.setBackground(new Color(243, 246, 185));
         messageField.setToolTipText("Field for message");
         textField.setToolTipText("Field for text");
@@ -36,17 +37,16 @@ public class MyWindowChat extends JFrame {
         /*
         Главная панель
          */
-        JPanel contents = new JPanel(new FlowLayout(FlowLayout.LEFT));
         contents.setBackground(new Color(79, 82, 116));
         contents.add(textLabel);
         contents.add(textField);
         contents.add(messageLabel);
         contents.add(messageField);
-        contents.add(jbs, BorderLayout.PAGE_END);
+        contents.add(jButtonSend, BorderLayout.PAGE_END);
         setContentPane(contents);
 
 
-        jbs.addActionListener(new ActionListener() {
+        jButtonSend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textField.append(messageField.getText() + "\n");
@@ -60,12 +60,12 @@ public class MyWindowChat extends JFrame {
                 messageField.setText(null);
             }
         });
-        setVisible(true);
     }
 }
 
 class App {
     public static void main(String[] args) {
-        new MyWindowChat();
+       MyWindowChat chat = new MyWindowChat();
+       chat.setVisible(true);
     }
 }
